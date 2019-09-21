@@ -7,7 +7,7 @@ exports.up = function (knex) {
         .notNullable()
         .unique()
       celebs.text('image_url')
-      celebs.text('info').notNullable()
+      celebs.text('info')
       celebs.date('born').notNullable()
       celebs.date('died')
       celebs.boolean('isDead')

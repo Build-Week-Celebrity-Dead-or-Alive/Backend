@@ -4,8 +4,8 @@ const helmet = require('helmet')
 
 // const authenticate = require('../auth/authenticate_middleware.js');
 // const authRouter = require('./auth/authRouter.js');
-// const celebsRouter = require('./celebs/celebsRouter.js');
-// const usersRouter = require('./users/usersRouter.js');
+const celebsRouter = require('./celebs/celebsRouter.js')
+const usersRouter = require('./users/usersRouter.js')
 
 const server = express()
 
@@ -14,11 +14,11 @@ server.use(cors())
 server.use(express.json())
 
 // server.use('/auth', authRouter);
-// server.use('/celebs', celebsRouter);
-// server.use('/users', usersRouter); 
+server.use('/celebs', celebsRouter)
+server.use('/users', usersRouter)
 
-server.get('/', (req, res) => {
-  res.send(`<h2>Api Home</h2>`)
-})
+// server.use('/', (req, res) => {
+//   res.send(`<h2>Api Home</h2>`)
+// })
 
 module.exports = server
