@@ -1,67 +1,98 @@
-const router = require('express').Router()
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const Users = require('../users/usersHelper')
-const secrets = require('../config/secrets')
-
+const Users = require('../users/usersHelper');
+const secrets = require('../config/secrets');
 
 router.post('/register', (req, res) => {
-  let user = req.body
-  const hash = bcrypt.hashSync(user.password, 10)
-  user.password = hash
+  let user = req.body;
+
+  if (!user) {
+    return res.status(400).json({ message: 'You need to register' });
+  }
+
+  if (!user.name) {
+    return res.status(400).json({ message: `name required to register` });
+  }
+
+  if (!user.username) {
+    return res.status(400).json({ message: `user name required to register` });
+  }
+
+  if (!user.password) {
+    return res.status(400).json({ message: `password required to register` });
+  }
+
+  const hash = bcrypt.hashSync(user.password, 10);
+  user.password = hash;
 
   Users.addUser(user)
-    .then(saved => {
-      res.status(201).json({ message: 'User Registered' })
-    })
     .catch(error => {
-      res
+      usernameTaken =
+        'SQLITE_CONSTRAINT: UNIQUE constraint failed: users.username';
+      if (error.toString().includes(usernameTaken)) {
+        return res
+          .status(500)
+          .json({ message: `the username ${user.username} is not available` });
+      }
+      return res
         .status(500)
-        .json({ message: 'Cannot register new user' })
+        .json({ message: `error adding new user: ${error}` });
     })
-})
-
-
+    .then(() => {
+      res.status(201).json({
+        message: `Thank you ${user.username} for registering`,
+        name: user.name,
+        username: user.username,
+        points: user.points,
+      });
+    });
+});
 
 router.post('/login', (req, res) => {
-  let { username, password } = req.body
+  let { username, password } = req.body;
 
   Users.findBy({ username })
-    .first() 
-    .then(user => {
-      console.log('user', user)
-      if (user && bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(user)
-       
-        res.status(200).json({
-          message: `Welcome ${user.username}!`,
-          name: user.name,
-          points: user.points,
-          token
-          
-        })
-      } else {
-        res.status(401).json({ message: 'Access Denied' })
-      }
-    })
     .catch(error => {
-      res.status(500).json(error)
+      res.status(500).json(error);
     })
-})
+    .then(users => {
+      if (users.length === 0) {
+        return res.status(404).json({
+          message: `${username} is not registered`,
+        });
+      }
 
-function generateToken (user) {
+      const user = users[0];
+
+      if (!bcrypt.compareSync(password, user.password)) {
+        return res.status(401).json({ message: 'wrong password' });
+      }
+
+      const token = generateToken(user);
+
+      res.status(200).json({
+        message: `Welcome ${user.username}!`,
+        id: user.id,
+        name: user.name,
+        points: user.points,
+        token,
+      });
+    });
+});
+
+function generateToken(user) {
   const payload = {
-    
-    subject: user.id, 
+    subject: user.id,
     username: user.username,
     name: user.name,
-    points: user.points
-  }
+    points: user.points,
+  };
   const options = {
-    expiresIn: '1d'
-  }
-  return jwt.sign(payload, secrets.jwtSecret, options)
+    expiresIn: '1d',
+  };
+  return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
-module.exports = router
+module.exports = router;
