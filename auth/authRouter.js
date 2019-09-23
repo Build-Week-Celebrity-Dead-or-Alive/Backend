@@ -90,7 +90,7 @@ function generateToken(user) {
     points: user.points,
   };
   const options = {
-    expiresIn: '1d',
+    expiresIn: '8d',
   };
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
