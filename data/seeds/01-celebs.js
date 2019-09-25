@@ -441,5 +441,157 @@ exports.seed = function(knex) {
       isDead: false,
       born: 1942,
     },
+    {
+      name: 'Seamus Heaney',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/183/459161.jpg',
+      info: 'Irish Poet and Playwriter',
+
+      isDead: true,
+      born: 1939,
+      died: 2013,
+    },
+    {
+      name: 'Kirk Douglas',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/106/266745.jpg',
+      info: 'American Actor',
+      isDead: false,
+      born: 1916,
+    },
+    {
+      name: 'Helen Mirren',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/21/54172.jpg',
+      info: 'British Actress',
+      isDead: false,
+      born: 1945,
+    },
+    {
+      name: 'Paul Simon',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/45/112628.jpg',
+      info: 'American Singer and Songwriter',
+      isDead: false,
+      born: 1941,
+    },
+    {
+      name: 'Dennis Hopper',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/41/103109.jpg',
+      info: 'American Actor and Director',
+      isDead: true,
+      born: 1936,
+      died: 2010,
+    },
+    {
+      name: 'Bill Paxton',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/1/3111.jpg',
+      info: 'American Actor and Film-maker',
+      isDead: true,
+      born: 1955,
+      died: 2017,
+    },
+    {
+      name: 'Julia Roberts',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/113/284896.jpg',
+      info: 'American Actress',
+      isDead: false,
+      born: 1967,
+    },
+    {
+      name: 'Paul Gascoigne',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/40/100306.jpg',
+      info: 'British Footballer',
+      isDead: false,
+      born: 1967,
+    },
+    {
+      name: 'Idris Elba',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/112/281002.jpg',
+      info: 'British Actor',
+      isDead: false,
+      born: 1972,
+    },
+    {
+      name: 'Brittany Murphy',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/12/30531.jpg',
+      info: 'American Actress',
+      isDead: true,
+      born: 1977,
+      died: 2009,
+    },
+    {
+      name: 'Petula Clark',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/82/207134.jpg',
+      info: 'British Actress and Singer',
+      isDead: false,
+      born: 1932,
+    },
+    {
+      name: 'Michael Jordan',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/86/216054.jpg',
+      info: 'American Basketball Player',
+      isDead: false,
+      born: 1963,
+    },
+    {
+      name: 'Val Kilmer',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/145/364355.jpg',
+      info: 'American Actor',
+      isDead: false,
+      born: 1959,
+    },
+    {
+      name: 'Elaine Paige',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/59/149343.jpg',
+      info: 'British Singer and Actress',
+      isDead: false,
+      born: 1948,
+    },
+    {
+      name: 'David Bowie',
+      info: 'British Singer-Songwriter and Actor',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/11/28212.jpg',
+      isDead: true,
+      born: 1947,
+      died: 2016,
+    },
+    {
+      name: 'Freddie Mercury',
+      info: 'British Singer-Songwriter',
+      isDead: true,
+      image_url:
+        'https://adamsbooks.co.za/wp-content/uploads/2018/01/Sorry-Image-Not-Available-297.png',
+      born: 1946,
+      died: 1991,
+    },
+    {
+      name: 'Jack Nicholson',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/159/398899.jpg',
+      info: 'American Actor and Filmmaker',
+      isDead: false,
+      born: 1937,
+    },
+    {
+      id: 75,
+      name: 'Dan Brown',
+      image_url:
+        'http://static.tvmaze.com/uploads/images/medium_portrait/200/502277.jpg',
+      info: 'American Author',
+      isDead: false,
+      born: 1964,
+    },
   ]);
 };
