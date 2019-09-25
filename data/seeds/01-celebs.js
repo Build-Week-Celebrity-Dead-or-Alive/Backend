@@ -585,7 +585,6 @@ exports.seed = function(knex) {
       born: 1937,
     },
     {
-      id: 75,
       name: 'Dan Brown',
       image_url:
         'http://static.tvmaze.com/uploads/images/medium_portrait/200/502277.jpg',
